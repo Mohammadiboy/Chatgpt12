@@ -42,7 +42,7 @@ bot.on('message', async (msg) => {
       const response = await axios.post(
         "https://api.openai.com/v1/chat/completions",
         {
-          model: "gpt-3.5-turbo",
+          model: "gpt-4o-mini",
           messages: [{ role: "user", content: userMessage }]
         },
         {
