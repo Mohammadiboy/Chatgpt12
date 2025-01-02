@@ -1,5 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
 const axios = require('axios');
+const express = require('express');
 
 // تنظیمات API
 const OPENAI_API_KEY = "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";
@@ -59,4 +60,20 @@ bot.on('message', async (msg) => {
       bot.sendMessage(chatId, "متأسفانه مشکلی پیش آمده است. لطفاً دوباره تلاش کنید.");
     }
   }
+});
+
+// ایجاد سرور Express برای گوش دادن به پورت
+const app = express();
+
+// پورت را از متغیر محیطی PORT بگیرید یا به 3000 تنظیم کنید
+const PORT = process.env.PORT || 3000;
+
+// سرور Express را راه‌اندازی کنید
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+// مسیر اصلی برای تست سرور
+app.get('/', (req, res) => {
+  res.send('بات تلگرام در حال اجرا است!');
 });
